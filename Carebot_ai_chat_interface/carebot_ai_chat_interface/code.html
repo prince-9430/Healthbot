@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CareBot AI</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style type="text/tailwindcss">
+        :root { --medium-blue: #1e77eb; --light-gray: #f0f2f4; --medium-gray: #6b7280; --dark-gray: #374151; --green: #10b981; --light-blue: #e0f2fe; --darker-blue: #0ea5e9; --light-orange-yellow: #fef3c7; } body { font-family: 'Inter', sans-serif; background:
+        linear-gradient(-45deg, #1e3a8a, #2563eb, #10b981, #9333ea); background-size: 400% 400%; animation: gradientBG 12s ease infinite; } @keyframes gradientBG { 0% {background-position: 0% 50%;} 50% {background-position: 100% 50%;} 100% {background-position:
+        0% 50%;} } /* Floating animation */ .float { animation: float 4s ease-in-out infinite; } @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0px); } } /* Smooth fade-in */ .fade-in
+        { animation: fadeIn 1.5s ease-in-out; } @keyframes fadeIn { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} } /* Typing effect */ .typing { display: inline-block; border-right: 2px solid var(--medium-blue);
+        animation: blink 0.7s steps(1) infinite; } @keyframes blink { 50% { border-color: transparent; } }
+    </style>
+</head>
+
+<body class="text-gray-800">
+
+    <div class="flex flex-col min-h-screen fade-in">
+        <!-- Header -->
+        <header class="fixed top-0 left-0 right-0 z-10 bg-white/90 backdrop-blur-md border-b border-[var(--light-gray)] px-6 py-3 flex items-center justify-between shadow-md">
+            <div class="flex items-center gap-4">
+                <div class="p-2 rounded-full bg-gradient-to-br from-green-400 to-blue-500 float shadow-lg">
+                    <span class="material-symbols-outlined text-white">forum</span>
+                </div>
+                <h1 class="text-xl">
+                    <span class="font-normal text-[var(--dark-gray)]">CareBot</span><span class="font-bold text-[var(--dark-gray)]">AI</span>
+                </h1>
+                <div class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-[var(--green)] rounded-full animate-pulse"></span>
+                    <span class="text-sm text-[var(--green)]">Online</span>
+                </div>
+                <div class="flex items-center gap-2 bg-[var(--light-blue)] text-[var(--darker-blue)] px-3 py-1 rounded-full text-xs shadow-sm">
+                    <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                    <span>AI Enhanced</span>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <button class="p-2 rounded-full bg-[var(--light-gray)] text-[var(--dark-gray)] hover:bg-gray-200 transition hover:scale-110">
+        <span class="material-symbols-outlined">history</span>
+      </button>
+                <button class="p-2 rounded-full bg-[var(--light-gray)] text-[var(--dark-gray)] hover:bg-gray-200 transition hover:scale-110">
+        <span class="material-symbols-outlined">refresh</span>
+      </button>
+                <button class="p-2 rounded-full bg-[var(--light-gray)] text-[var(--dark-gray)] hover:bg-gray-200 transition hover:scale-110">
+        <span class="material-symbols-outlined">open_in_new</span>
+      </button>
+            </div>
+        </header>
+
+        <!-- Main -->
+        <main class="flex-grow pt-20 pb-28 grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
+            <!-- Chat bubble -->
+            <div class="flex flex-col" id="chat-area">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--light-gray)] flex items-center justify-center shadow-md">
+                        <span class="material-symbols-outlined text-black">neurology</span>
+                    </div>
+                    <div class="flex flex-col gap-4">
+                        <div class="bg-white/90 backdrop-blur-md p-4 rounded-lg rounded-tl-none relative shadow-lg hover:scale-[1.02] transition">
+                            <p class="text-[var(--dark-gray)]">
+                                Hello! I'm your AI health assistant. I'm here to help you with health information, symptom checking, and general wellness guidance.
+                                <b class="font-bold">I can help you with:</b>
+                            </p>
+                            <ul class="list-disc list-inside text-[var(--dark-gray)] mt-2">
+                                <li>Understanding symptoms</li>
+                                <li>General health information</li>
+                                <li>Wellness and lifestyle tips</li>
+                                <li>When to seek medical care</li>
+                                <li>Medication information (general)</li>
+                            </ul>
+                            <p class="mt-4 text-[var(--dark-gray)]">
+                                <b class="font-bold">Please remember:</b> I'm not a replacement for professional medical advice. How can I assist you today?
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Quick buttons -->
+                <div class="mt-4 pl-14">
+                    <div class="grid grid-cols-2 gap-2">
+                        <button class="option-btn text-left border border-gray-300 text-[var(--medium-blue)] py-2 px-4 rounded-full bg-white/80 backdrop-blur-md hover:bg-blue-50 transition hover:scale-105 text-sm shadow-sm">Check my symptoms</button>
+                        <button class="option-btn text-left border border-gray-300 text-[var(--medium-blue)] py-2 px-4 rounded-full bg-white/80 backdrop-blur-md hover:bg-blue-50 transition hover:scale-105 text-sm shadow-sm">Learn about diseases</button>
+                        <button class="option-btn text-left border border-gray-300 text-[var(--medium-blue)] py-2 px-4 rounded-full bg-white/80 backdrop-blur-md hover:bg-blue-50 transition hover:scale-105 text-sm shadow-sm">Wellness tips</button>
+                        <button class="option-btn text-left border border-gray-300 text-[var(--medium-blue)] py-2 px-4 rounded-full bg-white/80 backdrop-blur-md hover:bg-blue-50 transition hover:scale-105 text-sm shadow-sm">Emergency guidance</button>
+                    </div>
+                    <p class="text-center text-xs text-gray-700 mt-4">09:00 AM</p>
+                </div>
+            </div>
+
+            <!-- Feature cards -->
+            <div class="flex flex-col items-center justify-center">
+                <p class="text-lg text-white mb-6 font-medium">Choose a topic to get started</p>
+                <div class="grid grid-cols-2 gap-4 w-full max-w-md">
+                    <div class="feature-card bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl p-4 flex flex-col items-start gap-2 shadow-md hover:shadow-xl transition hover:scale-105 cursor-pointer" data-text="Check my symptoms">
+                        <span class="material-symbols-outlined text-[var(--medium-blue)] text-3xl">health_and_safety</span>
+                        <h3 class="font-bold text-[var(--medium-blue)]">Check my symptoms</h3>
+                        <p class="text-sm text-[var(--medium-gray)]">Describe your symptoms for general health guidance</p>
+                    </div>
+                    <div class="feature-card bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl p-4 flex flex-col items-start gap-2 shadow-md hover:shadow-xl transition hover:scale-105 cursor-pointer" data-text="Learn about diseases">
+                        <span class="material-symbols-outlined text-[var(--medium-blue)] text-3xl">menu_book</span>
+                        <h3 class="font-bold text-[var(--medium-blue)]">Learn about diseases</h3>
+                        <p class="text-sm text-[var(--medium-gray)]">Get information about health conditions</p>
+                    </div>
+                    <div class="feature-card bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl p-4 flex flex-col items-start gap-2 shadow-md hover:shadow-xl transition hover:scale-105 cursor-pointer" data-text="Medication info">
+                        <span class="material-symbols-outlined text-[var(--medium-blue)] text-3xl">pill</span>
+                        <h3 class="font-bold text-[var(--medium-blue)]">Medication info</h3>
+                        <p class="text-sm text-[var(--medium-gray)]">Learn about medications and their uses</p>
+                    </div>
+                    <div class="feature-card bg-white/90 backdrop-blur-md border border-gray-200 rounded-xl p-4 flex flex-col items-start gap-2 shadow-md hover:shadow-xl transition hover:scale-105 cursor-pointer" data-text="Emergency guidance">
+                        <span class="material-symbols-outlined text-[var(--medium-blue)] text-3xl">emergency</span>
+                        <h3 class="font-bold text-[var(--medium-blue)]">Emergency guidance</h3>
+                        <p class="text-sm text-[var(--medium-gray)]">When to seek immediate medical care</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Chat input -->
+        <div class="fixed bottom-12 left-0 right-0 p-4 border-gray-200">
+            <div class="max-w-3xl mx-auto flex items-center gap-2">
+                <div class="relative flex-grow">
+                    <input id="chat-input" class="w-full pl-4 pr-12 py-3 border border-gray-300 rounded-full focus:ring-2 focus:ring-[var(--medium-blue)] focus:outline-none transition" placeholder="Type your health question here..." type="text" />
+                    <button id="send-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-[var(--medium-blue)] text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-700 transition hover:scale-110">
+          <span class="material-symbols-outlined">send</span>
+        </button>
+                </div>
+                <button class="flex-shrink-0 bg-[var(--dark-gray)] text-white w-12 h-12 rounded-full flex items-center justify-center hover:bg-black transition hover:scale-110">
+        <span class="material-symbols-outlined">help</span>
+      </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="fixed bottom-0 left-0 right-0 bg-[var(--light-orange-yellow)] p-2 text-center text-sm text-yellow-800 flex items-center justify-center gap-2 shadow-inner">
+            <span class="material-symbols-outlined text-base">warning</span>
+            <span>This AI provides general health info only. Always consult healthcare professionals for medical advice.</span>
+        </footer>
+    </div>
+
+    <script>
+        const input = document.getElementById("chat-input");
+        const chatArea = document.getElementById("chat-area");
+
+        const responses = {
+            "Check my symptoms": "Please describe your symptoms in detail.",
+            "Learn about diseases": "Which disease would you like to know about?",
+            "Wellness tips": "What kind of wellness tips are you interested in? (diet, sleep, fitness, etc.)",
+            "Emergency guidance": "What kind of emergency are you facing? I can guide you with first steps."
+        };
+
+        function addBotMessage(text) {
+            const msg = document.createElement("div");
+            msg.className = "mt-4 pl-14 fade-in";
+            msg.innerHTML = `
+      <div class="bg-white/90 backdrop-blur-md p-4 rounded-lg rounded-tl-none relative shadow-lg inline-block">
+        <p class="text-[var(--dark-gray)] typing">${text}</p>
+      </div>
+    `;
+            chatArea.appendChild(msg);
+            msg.scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        function handleSelection(text) {
+            input.value = text;
+            setTimeout(() => {
+                addBotMessage(responses[text] || "Can you tell me more?");
+            }, 600);
+        }
+
+        document.querySelectorAll(".option-btn, .feature-card").forEach(btn => {
+            btn.addEventListener("click", () => {
+                handleSelection(btn.innerText.trim() || btn.dataset.text);
+            });
+        });
+    </script>
+</body>
+
+</html>
